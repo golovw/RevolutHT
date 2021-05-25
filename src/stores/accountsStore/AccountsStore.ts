@@ -10,7 +10,13 @@ const {
   }
 } = services;
 
-export class AccountsStore {
+export interface AccountsStoreI {
+  accounts: Account[];
+  getAccounts: () => Promise<Account[]>;
+  makeExchange: (fromId: string, toId: string, amountFrom: number, amountTo:number) => void;
+}
+
+export class AccountsStore implements AccountsStoreI{
   accounts: Account[] = [];
 
   constructor() {
@@ -27,6 +33,8 @@ export class AccountsStore {
     runInAction(() => {
       this.accounts = data;
     });
+
+    return data;
   }
 
   makeExchange(fromId: string, toId: string, amountFrom: number, amountTo:number) {
