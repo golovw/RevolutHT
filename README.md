@@ -1,4 +1,4 @@
-# Revolut Exchange App
+# Exchange App
 
 Not an actual application but Revolut home task.
 
